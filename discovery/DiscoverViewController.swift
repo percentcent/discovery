@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 import os.log
+import Kingfisher
 
 class DiscoverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SuggestedTableViewCellDelegate {
     //MARK: properties
@@ -101,6 +102,10 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         cell.suggestedUserName.text = (user["userName"] as? String) ?? ""
         cell.suggestedUserIntro.text = (user["userIntro"] as? String) ?? ""
         
+        let userUrl = URL(string: (user["imageUrl"] as? String)!)
+        let processor = RoundCornerImageProcessor(cornerRadius: 40)
+        cell.suggestedUserImage.kf.setImage(with: userUrl, options: [.processor(processor)])
+        /*
         if let imageUrl = user["imageUrl"] as? String {
             Alamofire.request(imageUrl).responseImage(completionHandler: { (response) in
                 print(response)
@@ -111,7 +116,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                 }
             })
-        }
+        }*/
         
         if searchOrSuggested {
             cell.deleteButton.isHidden = false
@@ -139,7 +144,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         cell.followButton.backgroundColor = UIColor.blue
         cell.followButton.setTitle("Follow", for: .normal)
         cell.followButton.setTitleColor(UIColor.white, for: .normal)
-        cell.followButton.frame = CGRect(x: 265, y: 12, width: 55, height: 30)
+        cell.followButton.frame = CGRect(x: 265, y: 12, width: 65, height: 30)
     }
     
     //MARK: Serach Bar

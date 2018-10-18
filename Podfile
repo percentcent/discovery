@@ -8,4 +8,5 @@ use_frameworks!
 target 'discovery' do
     pod 'Alamofire', '~> 4.7'
     pod 'AlamofireImage', '~> 3.4'
+    pod 'Kingfisher', '~> 4.0'
 end

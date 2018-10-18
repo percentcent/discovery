@@ -70,7 +70,7 @@ class SuggestedTableViewCell: UITableViewCell {
         self.followButton.backgroundColor = UIColor.gray
         self.followButton.setTitle("Following", for: .normal)
         self.followButton.setTitleColor(UIColor.black, for: .normal)
-        self.followButton.frame = CGRect(x: 265, y: 12, width: 100, height: 30)
+        self.followButton.frame = CGRect(x: 265, y: 12, width: 120, height: 30)
         self.deleteButton.isHidden = true
         //need to transition to initial state when suggested users show again?
     }
